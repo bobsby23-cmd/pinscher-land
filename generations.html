@@ -15,166 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Стилизация за акордеони, филтри и родословно дърво */
-        .accordion-header { cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; }
-        .accordion-content.open { max-height: 300px; padding-top: 15px; }
-        .accordion-arrow { transition: transform 0.3s ease; }
-        .accordion-arrow.open { transform: rotate(180deg); }
-        
-        .filter-tabs { display: flex; gap: 10px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap; }
-        .filter-btn { background: #222; color: #fff; border: 1px solid rgba(183, 138, 68, 0.3); padding: 8px 20px; border-radius: 30px; cursor: pointer; transition: var(--transition); }
-        .filter-btn.active, .filter-btn:hover { background: var(--primary-color); border-color: var(--primary-color); color: #111; }
-        
-        .dog-card-item { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; margin-bottom: 15px; overflow: hidden; transition: var(--transition); }
-        .dog-card-header { padding: 15px 20px; display: flex; align-items: center; gap: 15px; cursor: pointer; background: #fafafa; }
-        .dog-avatar { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; background: #222; color: #fff; position: relative; }
-        .dog-avatar.champion { border: 2px solid var(--primary-color); }
-        .dog-avatar.memorial { background: #000; }
-        .dog-card-body { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; background: #fff; }
-        .dog-card-body.open { max-height: 400px; padding: 20px; border-top: 1px solid #eee; }
-        
-        .badge-tag { display: inline-block; background: rgba(183, 138, 68, 0.15); color: var(--primary-color); padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; margin: 2px; font-weight: 500; }
-        
-        /* Визуално родословно дърво */
-        .pedigree-tree-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 30px 20px;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            border: 1px solid #eaeaea;
-        }
-        .tree-header {
-            text-align: center;
-            margin-bottom: 25px;
-            width: 100%;
-        }
-        .tree-header h3 {
-            font-family: var(--font-heading, sans-serif);
-            font-size: 1.3rem;
-            color: #1a1a1a;
-            margin-bottom: 5px;
-        }
-        .tree-header p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        .controls {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            margin-top: 15px;
-        }
-        .ctrl-btn {
-            background: #222;
-            color: #fff;
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-        .ctrl-btn:hover {
-            background: var(--primary-color, #b78a44);
-            color: #111;
-        }
-        
-        .pedigree-generation-title {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #888;
-            margin-bottom: 12px;
-            font-weight: 600;
-            text-align: center;
-        }
-        .pedigree-level {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            width: 100%;
-            flex-wrap: wrap;
-            margin-bottom: 10px;
-        }
-        .pedigree-node {
-            background: #fafafa;
-            border: 1px solid #e5e5e5;
-            border-left: 4px solid var(--primary-color, #b78a44);
-            padding: 16px 24px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-            text-align: center;
-            min-width: 260px;
-            transition: all 0.3s ease;
-        }
-        .pedigree-node:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(183,138,68,0.12);
-            border-color: var(--primary-color, #b78a44);
-            background: #fff;
-        }
-        .pedigree-node .node-tag {
-            font-size: 0.7rem;
-            color: var(--primary-color, #b78a44);
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 4px;
-            display: block;
-            letter-spacing: 1px;
-        }
-        .pedigree-node .node-title {
-            font-weight: 700;
-            font-size: 1rem;
-            color: #1a1a1a;
-            margin-bottom: 4px;
-            font-family: var(--font-heading, sans-serif);
-        }
-        .pedigree-node .node-desc {
-            font-size: 0.85rem;
-            color: #666;
-        }
-        .pedigree-node.highlight-node {
-            background: rgba(183,138,68,0.04);
-            border-color: var(--primary-color, #b78a44);
-        }
-        .pedigree-node.litter-node {
-            background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
-            color: #fff;
-            border-left: 4px solid var(--primary-color, #b78a44);
-            border-color: #444;
-            min-width: 320px;
-        }
-        .pedigree-node.litter-node .node-title {
-            color: #fff;
-            font-size: 1.1rem;
-        }
-        .pedigree-node.litter-node .node-desc {
-            color: #ddd;
-        }
-        .tree-connector {
-            width: 2px;
-            height: 25px;
-            background: var(--primary-color, #b78a44);
-            margin: 5px auto;
-            opacity: 0.5;
-        }
-        .champions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-        .champion-card { background: #fff; border: 1px solid #eaeaea; border-radius: 10px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
-.lang-switcher { display: flex; align-items: center; gap: 6px; margin-left: 20px; }
-.lang-btn { background: none; border: none; color: var(--text-light); cursor: pointer; font-weight: 600; font-size: 0.85rem; padding: 4px 6px; transition: var(--transition); }
-.lang-btn.active, .lang-btn:hover { color: var(--primary-color); }
-@media (max-width: 768px) {
-    .lang-switcher { margin-left: 0; margin-top: 15px; }
-}
-    </style>
 </head>
 <body>
 
@@ -190,7 +30,7 @@
                 Pinscher<span>Land</span>
             </span>
         </a>
-        <div style="display: flex; align-items: center;">
+        <div class="header-actions">
             <nav class="nav" id="main-nav" aria-label="Основна навигация">
                 <ul class="nav-list">
                     <li><a href="puppies.html" class="nav-link" data-i18n="nav_puppies">Кученца</a></li>
@@ -202,9 +42,9 @@
                 </ul>
             </nav>
             <div class="lang-switcher">
-           <button onclick="setLanguage('bg')" class="lang-btn active">BG</button>
-    <span style="color: var(--primary-color);">/</span>
-            <button onclick="setLanguage('en')" class="lang-btn">EN</button>
+           <button data-language="bg" class="lang-btn active">BG</button>
+    <span class="lang-divider" aria-hidden="true">/</span>
+            <button data-language="en" class="lang-btn">EN</button>
             </div>
             <button type="button" class="mobile-menu-btn" aria-label="Отвори менюто" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
         </div>

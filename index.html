@@ -965,7 +965,7 @@
             <span class="logo-text">Pinscher<span>Land</span>
             </span>
         </a>
-        <div style="display: flex; align-items: center;">
+        <div class="header-actions">
             <nav class="nav" id="main-nav" aria-label="Основна навигация">
                 <ul class="nav-list">
                     <li><a href="puppies.html" class="nav-link" data-i18n="nav_puppies">Кученца</a></li>
@@ -977,8 +977,8 @@
                 </ul>
             </nav>
             <div class="lang-switcher">
-                <button onclick="setLanguage('bg')" class="lang-btn active">BG</button>
-                <button onclick="setLanguage('en')" class="lang-btn">EN</button>
+                <button data-language="bg" class="lang-btn active">BG</button>
+                <button data-language="en" class="lang-btn">EN</button>
             </div>
             <button type="button" class="mobile-menu-btn" aria-label="Отвори менюто" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
         </div>
@@ -1071,7 +1071,7 @@
                         <span class="badge badge-gold">👑 Шампион</span>
                     </div>
                     <span class="year-badge">2010 · Украйна</span>
-                    <a href="/legends/kimon-chernaya-liniya.html" class="card-media-link" aria-label="Преглед на профил и снимки: Kimon Chernaya Liniya">
+                    <a href="legends.html#kimon" class="card-media-link" aria-label="Преглед на профил и снимки: Kimon Chernaya Liniya">
                         <img src="images/generations/kimon-chernaya-liniya.jpg" alt="Kimon Chernaya Liniya" loading="lazy">
                     </a>
                 </div>
@@ -1113,7 +1113,7 @@
                         <span class="badge badge-gold">👑 Inter CH</span>
                     </div>
                     <span class="year-badge">2010 · Украйна</span>
-                    <a href="/legends/image-chernaya-liniya.html" class="card-media-link" aria-label="Преглед на профил и снимки: Image Chernaya Liniya">
+                    <a href="generations.html#chernaya-liniya" class="card-media-link" aria-label="Преглед на профил и снимки: Image Chernaya Liniya">
                         <img src="images/generations/image-chernaya-liniya.jpg" alt="Image Chernaya Liniya" loading="lazy">
                     </a>
                 </div>
@@ -1173,7 +1173,7 @@
                         <span class="badge badge-gold">👑 Шампион</span>
                     </div>
                     <span class="year-badge">2022 · Сърбия</span>
-                    <a href="/legends/tango-von-masterhof.html" class="card-media-link" aria-label="Преглед на профил и снимки: Tango Von Masterhof">
+                    <a href="legends.html#tango" class="card-media-link" aria-label="Преглед на профил и снимки: Tango Von Masterhof">
                         <img src="images/generations/tango-von-masterhof.jpg" alt="Tango, Von Masterhof" loading="lazy">
                     </a>
                 </div>
@@ -1210,7 +1210,7 @@
                         <span class="badge badge-gold">👑 Шампион</span>
                     </div>
                     <span class="year-badge">2022 · Сърбия</span>
-                    <a href="/legends/samsson-von-masterhof.html" class="card-media-link" aria-label="Преглед на профил и снимки: Samsson Von Masterhof">
+                    <a href="legends.html#samsson" class="card-media-link" aria-label="Преглед на профил и снимки: Samsson Von Masterhof">
                         <img src="images/generations/samsson-von-masterhof.jpg" alt="Samsson (Сашко), Von Masterhof" loading="lazy">
                     </a>
                 </div>
@@ -1247,7 +1247,7 @@
                         <span class="badge badge-gold">👑 Шампион</span>
                     </div>
                     <span class="year-badge">2024 · България</span>
-                    <a href="/legends/amore-trenertg-avatares-von-tia.html" class="card-media-link" aria-label="Преглед на профил и снимки: Amore, TrenerTG Avatares Von T & Ia">
+                    <a href="legends.html#amore" class="card-media-link" aria-label="Преглед на профил и снимки: Amore, TrenerTG Avatares Von T & Ia">
                         <img src="images/generations/trenertg-avatares-amore-von-t&ia.jpg" alt="Amore, TrenerTG Avatares Von T & Ia" loading="lazy">
                     </a>
                 </div>
@@ -1336,6 +1336,7 @@
     </div>
 </footer>
 
+<script src="js/main.js"></script>
 <script>
     const translations = {
         bg: {

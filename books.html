@@ -10,14 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .lang-switcher { display: flex; align-items: center; gap: 6px; margin-left: 20px; }
-        .lang-btn { background: none; border: none; color: var(--text-light); cursor: pointer; font-weight: 600; font-size: 0.85rem; padding: 4px 6px; transition: var(--transition); }
-        .lang-btn.active, .lang-btn:hover { color: var(--primary-color); }
-        @media (max-width: 768px) {
-            .lang-switcher { margin-left: 0; margin-top: 15px; }
-        }
-    </style>
 </head>
 <body>
 
@@ -33,7 +25,7 @@
                 Pinscher <span>Land</span>
             </span>
         </a>
-        <div style="display: flex; align-items: center;">
+        <div class="header-actions">
             <nav class="nav" id="main-nav" aria-label="Основна навигация">
                 <ul class="nav-list">
                     <li><a href="puppies.html" class="nav-link" data-i18n="nav_puppies">Кученца</a></li>
@@ -45,9 +37,9 @@
                 </ul>
             </nav>
             <div class="lang-switcher">
-                <button onclick="setLanguage('bg')" class="lang-btn active">BG</button>
-                <span style="color: var(--primary-color);">/</span>
-                <button onclick="setLanguage('en')" class="lang-btn">EN</button>
+                <button data-language="bg" class="lang-btn active">BG</button>
+                <span class="lang-divider" aria-hidden="true">/</span>
+                <button data-language="en" class="lang-btn">EN</button>
             </div>
             <button type="button" class="mobile-menu-btn" aria-label="Отвори менюто" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
         </div>

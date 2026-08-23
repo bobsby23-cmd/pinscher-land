@@ -10,24 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Стилизация за акордеони и компоненти */
-        .accordion-header { cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; }
-        .accordion-content.open { max-height: 300px; padding-top: 15px; }
-        .accordion-arrow { transition: transform 0.3s ease; }
-        .accordion-arrow.open { transform: rotate(180deg); }
-        
-        .dog-card-item { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; margin-bottom: 15px; overflow: hidden; transition: var(--transition); }
-        .dog-card-header { padding: 15px 20px; display: flex; align-items: center; gap: 15px; cursor: pointer; background: #fafafa; }
-        .badge-tag { display: inline-block; background: rgba(183, 138, 68, 0.15); color: var(--primary-color); padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; margin: 2px; font-weight: 500; }
-        .lang-switcher { display: flex; align-items: center; gap: 6px; margin-left: 20px; }
-        .lang-btn { background: none; border: none; color: var(--text-light); cursor: pointer; font-weight: 600; font-size: 0.85rem; padding: 4px 6px; transition: var(--transition); }
-        .lang-btn.active, .lang-btn:hover { color: var(--primary-color); }
-        @media (max-width: 768px) {
-            .lang-switcher { margin-left: 0; margin-top: 15px; }
-        }
-    </style>
 </head>
 <body>
 
@@ -43,7 +25,7 @@
                 Pinscher<span>Land</span>
             </span>
         </a>
-        <div style="display: flex; align-items: center;">
+        <div class="header-actions">
             <nav class="nav" id="main-nav" aria-label="Основна навигация">
                 <ul class="nav-list">
                     <li><a href="puppies.html" class="nav-link" data-i18n="nav_puppies">Кученца</a></li>
@@ -55,9 +37,9 @@
                 </ul>
             </nav>
             <div class="lang-switcher">
-            <button onclick="setLanguage('bg')" class="lang-btn active">BG</button>
-                    <span style="color: var(--primary-color);">/</span>
-            <button onclick="setLanguage('en')" class="lang-btn">EN</button>
+            <button data-language="bg" class="lang-btn active">BG</button>
+                    <span class="lang-divider" aria-hidden="true">/</span>
+            <button data-language="en" class="lang-btn">EN</button>
             </div>
             <button type="button" class="mobile-menu-btn" aria-label="Отвори менюто" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
         </div>
